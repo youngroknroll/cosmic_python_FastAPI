@@ -17,6 +17,7 @@ def make_batch_and_line(sku, batch_qty, line_qty):
     )
     
 def test_can_allocate_if_available_greater_than_required():
+    '''할당 가능 여부 테스트'''
     large_batch, small_line = make_batch_and_line("ELEGANT-LAMP", 20, 2)
     assert large_batch.can_allocate(small_line)
     
@@ -38,3 +39,4 @@ def test_allocation_is_idempotent():
     batch.allocate(line)
     batch.allocate(line)
     assert batch.available_quantity == 18
+    
